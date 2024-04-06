@@ -5,7 +5,7 @@ import compose from '../styles/compose'
 interface Props {
   className?: string
   placeholder?: string
-  value?: string
+  value?: string | number
   onChange?: (value: string) => void
   pdfMode?: boolean
 }

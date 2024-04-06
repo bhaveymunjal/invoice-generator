@@ -3,7 +3,7 @@ import { Invoice, ProductLine } from '../data/types'
 import { initialInvoice, initialProductLine } from '../data/initialData'
 
 import { Font } from '@react-pdf/renderer'
-import format from 'date-fns/format'
+import { format } from 'date-fns';
 import Document from '../Components/Document'
 import Page from '../Components/Page'
 import Download from '../Components/DownloadPDF'
@@ -61,35 +61,14 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
     }
   }
 
-  const handleProductLineChange = (index: number, name: keyof ProductLine, value: string) => {
-    const productLines = invoice.productLines.map((productLine, i) => {
-      if (i === index) {
-        const newProductLine = { ...productLine }
-
-        if (name === 'description') {
-          newProductLine[name] = value
-        } else {
-          if (
-            value[value.length - 1] === '.' ||
-            (value[value.length - 1] === '0' && value.includes('.'))
-          ) {
-            newProductLine[name] = value
-          } else {
-            const n = parseFloat(value)
-
-            newProductLine[name] = (n ? n : 0).toString()
-          }
-        }
-
-        return newProductLine
-      }
-
-      return { ...productLine }
-    })
+  const handleProductLineChange = (i: number, name: keyof ProductLine, value: string) => {
+    const productLines = invoice.productLines.map((productLine, index) =>
+      index === i ? { ...productLine, [name]: value } : productLine
+    )
 
     setInvoice({ ...invoice, productLines })
   }
-
+  
   const handleRemove = (i: number) => {
     const productLines = invoice.productLines.filter((productLine, index) => index !== i)
 
@@ -102,9 +81,9 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
     setInvoice({ ...invoice, productLines })
   }
 
-  const calculateAmount = (quantity: string, rate: string) => {
-    const quantityNumber = parseFloat(quantity)
-    const rateNumber = parseFloat(rate)
+  const calculateAmount = (quantity: number, rate: number) => {
+    const quantityNumber =quantity
+    const rateNumber = rate
     const amount = quantityNumber && rateNumber ? quantityNumber * rateNumber : 0
 
     return amount.toFixed(2)
@@ -114,8 +93,8 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
     let subTotal = 0
 
     invoice.productLines.forEach((productLine) => {
-      const quantityNumber = parseFloat(productLine.quantity)
-      const rateNumber = parseFloat(productLine.rate)
+      const quantityNumber = productLine.quantity
+      const rateNumber = productLine.rate
       const amount = quantityNumber && rateNumber ? quantityNumber * rateNumber : 0
 
       subTotal += amount
@@ -279,6 +258,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                   pdfMode={pdfMode}
                 />
               </View>
+              
               <View className="w-60" pdfMode={pdfMode}>
                 <EditableCalendarInput
                   value={format(invoiceDate, dateFormat)}

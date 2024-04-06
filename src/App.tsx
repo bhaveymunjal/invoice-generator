@@ -4,7 +4,7 @@ import InvoicePage from './Pages/InvoicePage'
 
 function App() {
   // const savedInvoice = window.localStorage.getItem('invoiceData')
-  let data:Invoice = null
+  let data = undefined
 
 
   return (

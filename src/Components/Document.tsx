@@ -3,6 +3,7 @@ import { Document as PdfDocument } from '@react-pdf/renderer'
 
 interface Props {
   pdfMode?: boolean
+  children: React.ReactNode
 }
 
 const Document: FC<Props> = ({ pdfMode, children }) => {

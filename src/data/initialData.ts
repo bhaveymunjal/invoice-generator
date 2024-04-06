@@ -1,8 +1,8 @@
 
 export const initialProductLine = {
   description: '',
-  quantity: '1',
-  rate: '0.00',
+  quantity: 1,
+  rate: 0.00,
 }
 
 export const initialInvoice = {
@@ -34,8 +34,8 @@ export const initialInvoice = {
   productLines: [
     {
       description: 'Sample Item',
-      quantity: '2',
-      rate: '100.00',
+      quantity: 2,
+      rate: 100.00,
     },
   ],
   subTotalLabel: 'Sub Total',
