@@ -1,11 +1,11 @@
-import React, { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { View as PdfView } from '@react-pdf/renderer'
 import compose from '../styles/compose'
 
 interface Props {
   className?: string
   pdfMode?: boolean
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 const View: FC<Props> = ({ className, pdfMode, children }) => {

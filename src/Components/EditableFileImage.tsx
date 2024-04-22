@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react'
+import { FC, useRef, useState } from 'react'
 import Slider from 'rc-slider'
 import { Image } from '@react-pdf/renderer'
 import useOnClickOutside from '../hooks/useOnClickOutside'
