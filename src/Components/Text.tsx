@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Text as PdfText } from '@react-pdf/renderer'
 import compose from '../styles/compose'
+import cn from 'classnames'
 
 interface Props {
   className?: string
@@ -14,7 +15,7 @@ const Text: FC<Props> = ({ className, pdfMode, children }) => {
       {pdfMode ? (
         <PdfText style={compose('span ' + (className ? className : ''))}>{children}</PdfText>
       ) : (
-        <span className={'span ' + (className ? className : '')}>{children}</span>
+        <span className={cn('span', className)}>{children}</span>
       )}
     </>
   )

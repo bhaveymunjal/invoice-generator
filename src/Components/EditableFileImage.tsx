@@ -4,6 +4,7 @@ import { Image } from '@react-pdf/renderer'
 import useOnClickOutside from '../hooks/useOnClickOutside'
 import compose from '../styles/compose'
 import 'rc-slider/assets/index.css'
+import cn from 'classnames'
 
 interface Props {
   className?: string
@@ -89,7 +90,7 @@ const EditableFileImage: FC<Props> = ({ className, placeholder, value, width, on
   }
 
   return (
-    <div className={`image ${value ? 'mb-5' : ''} ${className ? className : ''}`}>
+    <div className={cn('image', { 'mb-5': value }, className)}>
       {!value ? (
         <button
           type="button"

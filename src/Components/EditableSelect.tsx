@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Text } from '@react-pdf/renderer'
 import compose from '../styles/compose'
+import cn from 'classnames'
 
 export interface SelectOption {
   value: string
@@ -34,7 +35,7 @@ const EditableSelect: FC<Props> = ({
         <>
           {isEditing ? (
             <select
-              className={'select ' + (className ? className : '')}
+              className={cn('select', className)}
               value={value}
               onChange={onChange ? (e) => onChange(e.target.value) : undefined}
               onBlur={() => setIsEditing(false)}
@@ -50,7 +51,7 @@ const EditableSelect: FC<Props> = ({
             <input
               readOnly={true}
               type="text"
-              className={'input ' + (className ? className : '')}
+              className={cn('input', className)}
               value={value || ''}
               placeholder={placeholder || ''}
               onFocus={() => setIsEditing(true)}
