@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { Invoice } from '../data/types'
 import InvoicePage from '../Pages/InvoicePage'
+import cn from 'classnames'
 
 interface Props {
   data: Invoice
@@ -21,7 +22,10 @@ const Download: FC<Props> = ({ data }) => {
   }, [data])
 
   return (
-    <div className={'download-pdf ' + (!show ? 'loading' : '')} title="Save PDF">
+    <div
+      className={cn('download-pdf', { loading: !show })}
+      title="Save PDF"
+    >
       {show && (
         <PDFDownloadLink
           document={<InvoicePage pdfMode={true} data={data} />}

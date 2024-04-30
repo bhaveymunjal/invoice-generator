@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Page as PdfPage } from '@react-pdf/renderer'
 import compose from '../styles/compose'
+import cn from 'classnames'
 
 interface Props {
   className?: string
@@ -16,7 +17,7 @@ const Page: FC<Props> = ({ className, pdfMode, children }) => {
           {children}
         </PdfPage>
       ) : (
-        <div className={'page ' + (className ? className : '')}>{children}</div>
+        <div className={cn('page', className)}>{children}</div>
       )}
     </>
   )
