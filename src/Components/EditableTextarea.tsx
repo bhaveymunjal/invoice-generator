@@ -1,7 +1,8 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import { Text } from '@react-pdf/renderer'
 import compose from '../styles/compose'
+import cn from 'classnames'
 
 interface Props {
   className?: string
@@ -27,7 +28,7 @@ const EditableTextarea: FC<Props> = ({
       ) : (
         <TextareaAutosize
           minRows={rows || 1}
-          className={'input ' + (className ? className : '')}
+          className={cn('input', className)}
           placeholder={placeholder || ''}
           value={value || ''}
           onChange={onChange ? (e) => onChange(e.target.value) : undefined}

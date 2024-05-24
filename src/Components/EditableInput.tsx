@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Text } from '@react-pdf/renderer'
 import compose from '../styles/compose'
+import cn from 'classnames'
 
 interface Props {
   className?: string
@@ -18,7 +19,7 @@ const EditableInput: FC<Props> = ({ className, placeholder, value, onChange, pdf
       ) : (
         <input
           type="text"
-          className={'input ' + (className ? className : '')}
+          className={cn('input', className)}
           placeholder={placeholder || ''}
           value={value || ''}
           onChange={onChange ? (e) => onChange(e.target.value) : undefined}
