@@ -1,4 +1,4 @@
-module backend
+module invoice-generator
 
 require (
 	github.com/gin-contrib/cors v1.7.6
